@@ -1,4 +1,3 @@
-# clasificacion.py
 """Clasificación de caracteres y determinación del nivel de seguridad."""
 
 def clasificar_caracteres(nombre: str):
@@ -19,7 +18,6 @@ def clasificar_caracteres(nombre: str):
     for i in range(len(nombre)):
         num_ascii = ord(nombre[i])
 
-        # Detectar espacio (prohibido)
         if num_ascii == 32:
             print("No puede contener espacios.")
             return (None, None, None, None, None, None)
@@ -38,12 +36,11 @@ def clasificar_caracteres(nombre: str):
             tiene_simbolo = True
             cant_simbolos += 1
         else:
-            # Carácter no permitido (no es letra, número ni símbolo)
+
             print("Carácter no permitido.")
             return (None, None, None, None, None, None)
 
     return (tiene_letra, tiene_numero, tiene_simbolo, cant_letras, cant_numeros, cant_simbolos)
-
 
 def determinar_nivel(tiene_letra: bool, tiene_numero: bool, tiene_simbolo: bool,
                      cant_numeros: int, cant_simbolos: int, longitud: int,
@@ -52,13 +49,13 @@ def determinar_nivel(tiene_letra: bool, tiene_numero: bool, tiene_simbolo: bool,
     Retorna el nivel de seguridad del nombre de usuario:
     'Básico', 'Intermedio', 'Avanzado' o 'Sin categoría'.
     """
-    # Básico: solo letras, sin números ni símbolos, longitud entre 6 y 8
+                         
     if cant_numeros == 0 and cant_simbolos == 0 and 6 <= longitud <= 8:
         return "Básico"
-    # Intermedio: letras y números (ambos presentes), sin símbolos, longitud >= 8
+
     if tiene_letra and tiene_numero and not tiene_simbolo and longitud >= 8:
         return "Intermedio"
-    # Avanzado: letras, números y símbolos, longitud >= 12, y no termina en símbolo
+
     if tiene_letra and tiene_numero and tiene_simbolo and longitud >= 12 and not termina_en_simbolo:
         return "Avanzado"
     return "Sin categoría"
