@@ -1,13 +1,5 @@
-"""Clasificación de caracteres y determinación del nivel de seguridad."""
-
 def clasificar_caracteres(nombre: str):
-    """
-    Recorre el nombre y retorna una tupla con:
-    (tiene_letra, tiene_numero, tiene_simbolo, cant_letras, cant_numeros, cant_simbolos)
 
-    Si encuentra un espacio (código 32) o un carácter no permitido,
-    imprime el error correspondiente y retorna (None, None, None, None, None, None).
-    """
     tiene_letra = False
     tiene_numero = False
     tiene_simbolo = False
@@ -45,10 +37,6 @@ def clasificar_caracteres(nombre: str):
 def determinar_nivel(tiene_letra: bool, tiene_numero: bool, tiene_simbolo: bool,
                      cant_numeros: int, cant_simbolos: int, longitud: int,
                      termina_en_simbolo: bool) -> str:
-    """
-    Retorna el nivel de seguridad del nombre de usuario:
-    'Básico', 'Intermedio', 'Avanzado' o 'Sin categoría'.
-    """
                          
     if cant_numeros == 0 and cant_simbolos == 0 and 6 <= longitud <= 8:
         return "Básico"
